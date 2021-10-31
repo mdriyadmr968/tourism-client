@@ -33,17 +33,17 @@ const AddSpot = () => {
         formData.append('rating', addSpot.duration);
         formData.append('duration', addSpot.rating);
 
-        fetch('localhost:5000/addNewSpot', {
-            method: 'POST',
-            body: formData
+        fetch("https://gruesome-alien-56201.herokuapp.com/addNewSpot", {
+          method: "POST",
+          body: formData,
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         e.preventDefault();
     };
 
