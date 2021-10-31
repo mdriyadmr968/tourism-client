@@ -12,9 +12,9 @@ const SpotDetail = () => {
 
     const [spotData, setSpotData] = useState([]);
     useEffect(() => {
-        fetch("https://gruesome-alien-56201.herokuapp.com/spots")
-          .then((res) => res.json())
-          .then((data) => setSpotData(data));
+        fetch('http://localhost:5000/spots')
+            .then(res => res.json())
+            .then(data => setSpotData(data))
     }, []);
 
     const { id } = useParams();
@@ -39,21 +39,22 @@ const SpotDetail = () => {
         formData.append('price', spot.price);
         formData.append('status', bookingInfo.status);
 
-        fetch("https://gruesome-alien-56201.herokuapp.com/addBooking", {
-          method: "POST",
-          body: formData,
+        fetch('http://localhost:5000/addBooking', {
+            method: 'POST',
+            body: formData
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
-          .then((data) => {
-            if (data) {
-              window.alert("Order placed Succesfully");
-            } else {
-              window.alert("Order Placed succesfully");
-            }
-          });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .then(data => {
+                if (data) {
+                    window.alert("Order placed Succesfully")
+                } else {
+                    window.alert("Order Placed succesfully")
+                }
+
+            })
 
         e.preventDefault();
     };

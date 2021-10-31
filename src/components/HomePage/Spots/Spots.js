@@ -8,9 +8,9 @@ import loading from "../../../logos/loading.gif";
 const Spots = () => {
     const [spotData, setSpotData] = useState([]);
     useEffect(() => {
-        fetch("https://gruesome-alien-56201.herokuapp.com/spots")
-          .then((res) => res.json())
-          .then((data) => setSpotData(data));
+        fetch('http://localhost:5000/spots')
+            .then(res => res.json())
+            .then(data => setSpotData(data))
     }, []);
     const history = useHistory();
     return (

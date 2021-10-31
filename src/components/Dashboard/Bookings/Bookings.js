@@ -11,24 +11,24 @@ const Bookings = () => {
     const [loggedInUser] = useContext(UserContext);
     const [bookingInfo, setBookingInfo] = useState([]);
     useEffect(() => {
-        fetch("https://gruesome-alien-56201.herokuapp.com/allBookings")
-          .then((res) => res.json())
-          .then((data) => setBookingInfo(data));
+        fetch('http://localhost:5000/allBookings')
+            .then(res => res.json())
+            .then(data => setBookingInfo(data))
     }, []);
 
     const statuses = ['Pending', 'Confirmed'];
     const statusChange = (id, e) => {
         const updatedBookingInfo = { status: e.target.value };
 
-        fetch(`https://gruesome-alien-56201.herokuapp.com/update/${id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updatedBookingInfo),
+        fetch(`http://localhost:5000/update/${id}`, {
+            method: 'PATCH',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedBookingInfo)
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     };
 
     return (

@@ -11,11 +11,9 @@ const MyOrder = () => {
     const [loggedInUser] = useContext(UserContext);
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        fetch(
-          `https://gruesome-alien-56201.herokuapp.com/bookings?email=${loggedInUser.email}`
-        )
-          .then((res) => res.json())
-          .then((data) => setMyOrders(data));
+        fetch(`http://localhost:5000/bookings?email=${loggedInUser.email}`)
+            .then(res => res.json())
+            .then(data => setMyOrders(data))
     }, [loggedInUser.email]);
     return (
         <div className="bookings">
