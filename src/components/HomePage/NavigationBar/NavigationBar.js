@@ -57,26 +57,43 @@ const NavigationBar = () => {
         buttons = (
             <ul className="navbar-nav menuBtn">
                 <li className="nav-item">
-                    <button onClick={() => history.push('/login')} className="btn indigoBtn" >Login</button>
+                    <button onClick={() => history.push('/login')} className="btn btn-warning" >Login</button>
                 </li>
             </ul>
         )
     }
     return (
-            <div className="">
-                <Navbar className="px-5 " variant="dark" collapseOnSelect expand="md" >
-                <Navbar.Brand href=""><img  className ="w-25"style={{height:"50px"}} src={logo} alt=""/><span>Infinite Tourism</span></Navbar.Brand>
-                <Navbar.Toggle className="ml-auto" aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link href="" onClick={() => history.push('/')}>Home</Nav.Link>
-                        <Nav.Link   as={NavLink} to="/myOrders" href="" >My Orders</Nav.Link>
-                        <Nav.Link as={NavLink} to="/manageBooking" href="" >Manage All Orders</Nav.Link>
-                    </Nav>
-                    {buttons}
-                </Navbar.Collapse>
-            </Navbar>
-            </div>
+      <div className="">
+        <Navbar className="px-5 " variant="dark" collapseOnSelect expand="md">
+          <Navbar.Brand href="">
+            <img
+              className="w-50 mx-2"
+              style={{ height: "50px" }}
+              src={logo}
+              alt=""
+            />
+            <span>Exploriana</span>
+          </Navbar.Brand>
+          <Navbar.Toggle
+            className="ml-auto"
+            aria-controls="responsive-navbar-nav"
+          />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">
+              <Nav.Link href="" onClick={() => history.push("/")}>
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/myOrders" href="">
+                My Orders
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/manageBooking" href="">
+                Manage All Orders
+              </Nav.Link>
+            </Nav>
+            {buttons}
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
     );
 };
 

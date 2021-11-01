@@ -12,9 +12,9 @@ const SpotDetail = () => {
 
     const [spotData, setSpotData] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/spots')
-            .then(res => res.json())
-            .then(data => setSpotData(data))
+        fetch("https://fierce-hamlet-20637.herokuapp.com/spots")
+          .then((res) => res.json())
+          .then((data) => setSpotData(data));
     }, []);
 
     const { id } = useParams();
@@ -39,34 +39,28 @@ const SpotDetail = () => {
         formData.append('price', spot.price);
         formData.append('status', bookingInfo.status);
 
-        fetch('http://localhost:5000/addBooking', {
-            method: 'POST',
-            body: formData
+        fetch("https://fierce-hamlet-20637.herokuapp.com/addBooking", {
+          method: "POST",
+          body: formData,
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .then(data => {
-                if (data) {
-                    window.alert("Order placed Succesfully")
-                } else {
-                    window.alert("Order Placed succesfully")
-                }
-
-            })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .then((data) => {
+            if (data) {
+              window.alert("Order placed Succesfully");
+            } else {
+              window.alert("Order Placed succesfully");
+            }
+          });
 
         e.preventDefault();
     };
     return (
         <div>
             <NavigationBar></NavigationBar>
-            <div className="spotWrapper text-center">
-                <div className="spotInner pt-5 ">
-                    <h1 className="pt-5 mt-3 font-weight-bold">Tourist Spot Details</h1>
-                </div>
-                <div className="spotOverlay"></div>
-            </div>
+            
             <Container className="mt-5">
                 <Row>
                     <Col md={8}>
@@ -92,14 +86,7 @@ const SpotDetail = () => {
                             Insurance : BDT 5000.
                             
                         </p>
-                        <h3 className="font-weight-bold darkIndigoText">Package Detail</h3>
-                        <p className="text-secondary"> # All transfers between airports/harbours/stations and hotels.</p>
-                        <p className="text-secondary"> #
-Twin share tourist and first-class accommodation with private facilities, as specified.</p>
-                        <p className="text-secondary"> # Cruises.</p>
-                        <p className="text-secondary"># Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.</p>
-                        <p className="text-secondary"> # Orderal cars.</p>
-                        <p className="text-secondary"> # Entrance fees to attractions.</p>                        <p className="text-secondary"> # Tickets for entry to events or attractions.</p>
+                        
                         
                     </Col>
                     <Col md={4}>
@@ -117,7 +104,7 @@ Twin share tourist and first-class accommodation with private facilities, as spe
                                 <Form.Group>
                                     <Form.Control onBlur={handleBlur} size="lg" as="textarea" name="message" rows={3} type="text" placeholder="Message" required />
                                 </Form.Group>
-                                <button  type="submit" size="lg" className="btn indigoBtn form-control">Place Order</button>
+                                <button  type="submit" size="lg" className="btn btn-danger form-control">Place Order</button>
                             </Form>
                         </div>
                     </Col>

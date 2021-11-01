@@ -1,4 +1,4 @@
-# Infinite Tourism
+# Exploriana
 
 A responsive Travel booking Service web application tourists.
 # Feature
